@@ -15,6 +15,8 @@ import com.experitest.appium.SeeTestCapabilityType;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 
+
+
 public class LoginTest extends BaseTest {
 	protected SeeTestAndroidDriver<SeeTestAndroidElement> driver = null;
 	
@@ -35,11 +37,13 @@ public class LoginTest extends BaseTest {
 	
 	@Test
 	public void test(){
+
 		driver.findElement(in.Repo.obj("login.usernameTextField")).sendKeys("company");
 		driver.findElement(in.Repo.obj("login.passwordTextField")).sendKeys("company");
 		driver.findElement(in.Repo.obj("login.Login")).click();
 		driver.findElement(in.Repo.obj("main.MakePayment"));
 		driver.findElement(in.Repo.obj("main.Logout")).click();
+
 	}
 	
 	@AfterMethod
