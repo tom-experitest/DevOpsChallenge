@@ -21,6 +21,7 @@ public class IOSDemoTest extends BaseTest {
 	@BeforeMethod
 	@Parameters("deviceQuery")
 	public void setUp(@Optional("@os='ios'") String deviceQuery) throws Exception {
+		System.out.println("User Dir : " + System.getProperty("user.dir"));
 		init();
 		// Init application / device capabilities
 //		dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBankO");
