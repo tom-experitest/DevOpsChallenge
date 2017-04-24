@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import com.experitest.appium.SeeTestCapabilityType;
 import com.experitest.manager.client.PManager;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -41,11 +42,17 @@ public class BaseTest {
         // In case your user is assign to a single project leave empty, otherwise please specify the project name
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
         // Set up the manager build ID and URL
-        if (!System.getenv().containsKey("build")) {
-            PManager.getInstance().addProperty("build", "debug");
-        }
+
         System.setProperty("manager.url", "cloudreports.experitest.com");
         PManager.getInstance().addProperty("stream", "qachallenge");
+    }
+
+    @AfterMethod
+    public void tearDownMethod() {
+        if (!System.getenv().containsKey("build")) {
+            PManager.getInstance().addProperty("build", "debug");
+        } else
+            PManager.getInstance().addProperty("build", System.getenv("build"));
     }
 
     protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException {
