@@ -45,7 +45,7 @@ public class BaseTest {
             PManager.getInstance().addProperty("build", "debug");
         }
         System.setProperty("manager.url", "cloudreports.experitest.com");
-        System.setProperty("stream", "qachallenge");
+        PManager.getInstance().addProperty("stream", "qachallenge");
     }
 
     protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException {
