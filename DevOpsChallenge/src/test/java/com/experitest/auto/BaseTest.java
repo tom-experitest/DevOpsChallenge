@@ -6,11 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.experitest.appium.SeeTestCapabilityType;
+import com.experitest.manager.client.PManager;
 
 public class BaseTest {
 
@@ -28,6 +27,10 @@ public class BaseTest {
         dc.setCapability(SeeTestCapabilityType.PASSWORD, getProperty("password", cloudProperties));
         // In case your user is assign to a single project leave empty, otherwise please specify the project name
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
+        if(!System.getenv().containsKey("build")){
+             PManager.getInstance().addProperty("build", "debug");
+        }
+        System.setProperty("manager.url", "cloudreports.experitest.com");
 
 	}
 
