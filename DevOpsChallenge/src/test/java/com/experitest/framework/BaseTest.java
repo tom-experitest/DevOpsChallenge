@@ -41,19 +41,18 @@ public class BaseTest {
         dc.setCapability(SeeTestCapabilityType.PASSWORD, getProperty("gridpass", cloudProperties));
         // In case your user is assign to a single project leave empty, otherwise please specify the project name
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
-        // Set up the manager build ID and URL
 
+        // Set up the manager build ID and URL
         System.setProperty("manager.url", "cloudreports.experitest.com");
         PManager.getInstance().addProperty("stream", "qachallenge");
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
         if (!System.getenv().containsKey("build")) {
             PManager.getInstance().addProperty("build", "debug");
         } else
             PManager.getInstance().addProperty("build", System.getenv("build"));
+
     }
+
+
 
     protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException {
         if (System.getProperty(property) != null) {
