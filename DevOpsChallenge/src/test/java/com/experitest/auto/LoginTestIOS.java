@@ -27,7 +27,7 @@ public class LoginTestIOS extends BaseTest {
 		dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBankO");
 		dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBankO");
 		dc.setCapability(SeeTestCapabilityType.DEVICE_QUERY, deviceQuery);
-		dc.setCapability(SeeTestCapabilityType.TEST_NAME, "IOSDemoTest");
+		dc.setCapability(SeeTestCapabilityType.TEST_NAME, "LoginTestIOS");
 		driver = new SeeTestIOSDriver<>(new URL(getProperty("url",cloudProperties)), dc);
 	}
 
@@ -36,6 +36,8 @@ public class LoginTestIOS extends BaseTest {
 		driver.findElement(in.Repo.obj("login_ios.Username")).sendKeys("company");
 		driver.findElement(in.Repo.obj("login_ios.Password")).sendKeys("company");
 		driver.findElement(in.Repo.obj("login_ios.loginButton")).click();
+		driver.findElement(in.Repo.obj("main_ios.makePaymentButton"));
+		driver.findElement(in.Repo.obj("main_ios.logoutButton")).click();
 
 	}
 
