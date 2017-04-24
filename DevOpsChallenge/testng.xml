@@ -4,14 +4,14 @@
   <test name="IOS tests">
   	<parameter name="deviceQuery" value="@os='ios'"/>
     <classes>
-      <class name="com.experitest.auto.LoginTestIOS"/>
+      <class name="com.experitest.tests.LoginTestIOS"/>
     </classes>
   </test> <!-- Test -->
   <test name="Android tests">
   	<parameter name="deviceQuery" value="@os='android'"/>
     <classes>
-      <class name="com.experitest.auto.LoginTest"/>
-      <class name="com.experitest.auto.LoginFailTest"/>
+      <class name="com.experitest.tests.LoginTest"/>
+      <class name="com.experitest.tests.LoginFailTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
