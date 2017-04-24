@@ -17,7 +17,7 @@ public class BaseTest {
 	protected DesiredCapabilities dc = new DesiredCapabilities();
 	protected Properties cloudProperties = new Properties();
 	public void init() throws Exception{
-		System.out.println("User Dir : " + System.getProperty("user.dir"));
+//		System.out.println("User Dir : " + System.getProperty("user.dir"));
 		initCloudProperties();
 		File reporterDir = new File(System.getProperty("user.dir"),"reports");
 		reporterDir.mkdirs();
@@ -32,6 +32,9 @@ public class BaseTest {
 	}
 
 	protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException{
+
+		System.out.println(System.getenv().toString());
+
 		if(System.getProperty(property) != null){
 			return System.getProperty(property);
 		} else if(System.getenv().containsKey(property)){
