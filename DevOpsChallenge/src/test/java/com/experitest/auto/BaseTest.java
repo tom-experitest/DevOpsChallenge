@@ -17,6 +17,7 @@ public class BaseTest {
 	protected DesiredCapabilities dc = new DesiredCapabilities();
 	protected Properties cloudProperties = new Properties();
 	public void init() throws Exception{
+		System.out.println("User Dir : " + System.getProperty("user.dir"));
 		initCloudProperties();
 		File reporterDir = new File(System.getProperty("user.dir"),"reports");
 		reporterDir.mkdirs();
