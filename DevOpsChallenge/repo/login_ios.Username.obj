@@ -1,0 +1,5 @@
+#Mon Apr 24 15:08:51 IDT 2017
+json={"nodeName"\:"XCUIElementTypeTextField","visible"\:"true","hidden"\:"false","textContext"\:"usernameTextField","knownSuperClass"\:"UITextField","uniqueKeys"\:"nodeName,textContext,label,XCElementType,name,text,placeholder,accessibilityLabel","label"\:"usernameTextField","dumpElementType"\:"NONINSTRUMENTED","enabled"\:"true","onScreen"\:"true","top"\:"true","XCElementType"\:"XCUIElementTypeTextField","x"\:"40","width"\:"560","name"\:"usernameTextField","y"\:"262","text"\:"usernameTextField","placeholder"\:"Username","accessibilityLabel"\:"usernameTextField","class"\:"UIATextField","height"\:"62"}
+page=login_ios
+by=xpath
+expression=//*[@placeholder\='Username']
