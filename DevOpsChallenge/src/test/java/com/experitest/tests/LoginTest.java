@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
 	protected SeeTestAndroidDriver<SeeTestAndroidElement> driver = null;
 	
 	@BeforeMethod
-	public void setUp(@Optional("@os='android'") String deviceQuery) throws Exception{
+	public void setUp() throws Exception{
 
 		deviceQuery = deviceQuery == null ? "@os='android" : deviceQuery;
 		dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank/.LoginActivity");
