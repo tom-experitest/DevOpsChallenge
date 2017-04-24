@@ -22,6 +22,7 @@ public class LoginTestIOS extends BaseTest {
 	@Parameters("deviceQuery")
 	public void setUp(@Optional("@os='ios'") String deviceQuery) throws Exception {
 		init();
+		System.out.println("Build Number : " + System.getenv("build"));
 		// Init application / device capabilities
 //		dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBankO");
 		dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBankO");
