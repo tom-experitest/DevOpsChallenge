@@ -23,8 +23,8 @@ public class BaseTest {
         dc.setCapability(SeeTestCapabilityType.REPORT_DIRECTORY, reporterDir.getAbsolutePath());
         dc.setCapability(SeeTestCapabilityType.REPORT_FORMAT, "xml");
         dc.setCapability(SeeTestCapabilityType.USE_REMOTE_GRID, true);
-        dc.setCapability(SeeTestCapabilityType.USERNAME, getProperty("username", cloudProperties));
-        dc.setCapability(SeeTestCapabilityType.PASSWORD, getProperty("password", cloudProperties));
+        dc.setCapability(SeeTestCapabilityType.USERNAME, getProperty("griduser", cloudProperties));
+        dc.setCapability(SeeTestCapabilityType.PASSWORD, getProperty("griduser", cloudProperties));
         // In case your user is assign to a single project leave empty, otherwise please specify the project name
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
         if(!System.getenv().containsKey("build")){
@@ -35,8 +35,6 @@ public class BaseTest {
 	}
 
 	protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException{
-
-		System.out.println(System.getenv().toString());
 
 		if(System.getProperty(property) != null){
 			return System.getProperty(property);
