@@ -46,6 +46,8 @@ public class BaseTest {
 		return null;
 	}
 	private void initCloudProperties() throws FileNotFoundException, IOException {
+		if (System.getenv().containsKey("gridpass"))
+			return;
 		FileReader fr = new FileReader("cloud.properties");
 		cloudProperties.load(fr);
 		fr.close();
