@@ -24,7 +24,7 @@ public class BaseTest {
         dc.setCapability(SeeTestCapabilityType.REPORT_FORMAT, "xml");
         dc.setCapability(SeeTestCapabilityType.USE_REMOTE_GRID, true);
         dc.setCapability(SeeTestCapabilityType.USERNAME, getProperty("griduser", cloudProperties));
-        dc.setCapability(SeeTestCapabilityType.PASSWORD, getProperty("griduser", cloudProperties));
+        dc.setCapability(SeeTestCapabilityType.PASSWORD, getProperty("gridpass", cloudProperties));
         // In case your user is assign to a single project leave empty, otherwise please specify the project name
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
         if(!System.getenv().containsKey("build")){
