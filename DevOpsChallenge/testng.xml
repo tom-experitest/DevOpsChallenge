@@ -11,6 +11,7 @@
   	<parameter name="deviceQuery" value="@os='android'"/>
     <classes>
       <class name="com.experitest.auto.LoginTest"/>
+      <class name="com.experitest.auto.LoginFailTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
