@@ -43,7 +43,7 @@ public class BaseTest {
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
 
         // Set up the manager build ID and URL
-//        System.setProperty("manager.url", "cloudreports.experitest.com");
+        System.setProperty("manager.url", "cloudreports.experitest.com");
         PManager.getInstance().addProperty("stream", "qachallenge");
         if (!System.getenv().containsKey("build")) {
             PManager.getInstance().addProperty("build", "debug");
