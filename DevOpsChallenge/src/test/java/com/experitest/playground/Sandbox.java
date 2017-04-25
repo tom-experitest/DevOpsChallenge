@@ -1,28 +1,31 @@
-package com.experitest.framework;
+package com.experitest.playground;
+
+import com.experitest.appium.SeeTestAndroidDriver;
+import com.experitest.appium.SeeTestCapabilityType;
+import com.experitest.manager.client.PManager;
+import com.experitest.manager.testng.ManagerITestListener;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
-import com.experitest.manager.testng.ManagerITestListener;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import com.experitest.appium.SeeTestCapabilityType;
-import com.experitest.manager.client.PManager;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
+/**
+ * DevOpsChallenge
+ * Created by tom.ben-simhon on 4/25/2017.
+ */
+public class Sandbox {
 
-@Listeners(ManagerITestListener.class)
-public class BaseTest {
 
     protected DesiredCapabilities dc = new DesiredCapabilities();
     protected Properties cloudProperties = new Properties();
     protected String deviceQuery;
-
+    SeeTestAndroidDriver driver;
     @BeforeTest
     public void setUpTest(ITestContext context) {
         deviceQuery = (context.getCurrentXmlTest().getParameter("deviceQuery") != null) ?
@@ -35,6 +38,7 @@ public class BaseTest {
         File reporterDir = new File(System.getProperty("user.dir"), "reports");
         reporterDir.mkdirs();
         dc.setCapability(SeeTestCapabilityType.REPORT_DIRECTORY, reporterDir.getAbsolutePath());
+        dc.setCapability(SeeTestCapabilityType.TEST_NAME,"testname");
         dc.setCapability(SeeTestCapabilityType.REPORT_FORMAT, "xml");
         dc.setCapability(SeeTestCapabilityType.USE_REMOTE_GRID, true);
         dc.setCapability(SeeTestCapabilityType.USERNAME, getProperty("griduser", cloudProperties));
@@ -43,15 +47,19 @@ public class BaseTest {
         dc.setCapability(SeeTestCapabilityType.PROJECT_NAME, getProperty("project", cloudProperties));
 
         // Set up the manager build ID and URL
-//        System.setProperty("manager.url", "cloudreports.experitest.com");
-        PManager.getInstance().addProperty("stream", "qachallenge");
-        if (!System.getenv().containsKey("build")) {
-            PManager.getInstance().addProperty("build", "debug");
-        } else
-            PManager.getInstance().addProperty("build", System.getenv("build"));
+        driver = new SeeTestAndroidDriver(new URL("http://localhost:8090"), dc);
+    }
+
+    @Test
+    public void testReporter() {
 
     }
 
+    @AfterMethod
+    public void tearDown() {
+
+        driver.quit();
+    }
 
 
     protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException {
@@ -72,3 +80,5 @@ public class BaseTest {
     }
 
 }
+
+
