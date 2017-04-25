@@ -52,8 +52,6 @@ public class BaseTest {
 
     }
 
-
-
     protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException {
         if (System.getProperty(property) != null) {
             return System.getProperty(property);
