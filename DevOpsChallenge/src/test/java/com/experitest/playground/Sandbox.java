@@ -19,6 +19,7 @@ import java.util.Properties;
  * DevOpsChallenge
  * Created by tom.ben-simhon on 4/25/2017.
  */
+@Listeners(ManagerITestListener.class)
 public class Sandbox {
 
 
@@ -52,6 +53,7 @@ public class Sandbox {
 
     @Test
     public void testReporter() {
+        PManager.getInstance().addProperty("test","testing");
 
     }
 
